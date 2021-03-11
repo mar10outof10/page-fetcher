@@ -25,7 +25,7 @@ const overwrite = (body) => {
     } else {
       console.log('I do not understand, please enter \'y\' or \'n\'.');
     }
-  })
+  });
 };
 
 const writeFile = (body) => { // writes body received from request() to file in filepath
@@ -42,7 +42,7 @@ request(url, (error, response, body) => {
     process.exit();
   }
 
-  fs.access(filePath, fs.R_OK, (err) => { //checks if file exists. 
+  fs.access(filePath, fs.R_OK, (err) => { //checks if file exists.
 
     if (!err) { // if file exists (no error thrown)
       console.log('File already exists, overwrite? \'y\' or \'n\'');
@@ -50,7 +50,7 @@ request(url, (error, response, body) => {
 
     } else { // if file doesn't exist, we write it
       writeFile(body);
-      rl.close() // must close readline listener
+      rl.close(); // must close readline listener
     }
-  })
+  });
 });
